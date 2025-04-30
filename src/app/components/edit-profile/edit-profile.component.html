@@ -1,0 +1,26 @@
+<nav class="top-navbar">
+  <h2>Welcome to the Hospital</h2>
+</nav>
+<nav class="mid-navbar">
+  <a href="/dashboard" routerLinkActive="active">Home</a>
+  <a routerLink="/about" routerLinkActive="active">About Us</a>
+  <a href="/doctor" routerLinkActive="active">Doctors</a>
+  <a routerLink="/status" routerLinkActive="active">Appoinment Status</a>
+  <a routerLink="/feedback" routerLinkActive="active">Feedback</a>
+</nav>
+
+<!-- <img src="assets/profile.png" width="30"> <br> -->
+
+
+<h2 style="text-align: center;"> Edit Profile</h2> 
+
+<form #profileForm="ngForm" (ngSubmit)="updateProfile()">
+
+
+  Name : <input type="text" [(ngModel)]="profile.name" name="name" required><br><br>
+  Email :<input type="email" [(ngModel)]="profile.email" name="email" required><br><br>
+  Age :<input type="number" [(ngModel)]="profile.age" name="age" required><br><br><br>
+  
+  <button type="submit" (click)="updateProfile()">Update Profile</button>
+
+</form>

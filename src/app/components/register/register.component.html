@@ -1,0 +1,106 @@
+<div class="body">
+  <h2>Register</h2>
+  <form (ngSubmit)="register()" #registerForm="ngForm" class="signup-form">
+
+    <div class="form-group">
+      <input 
+        type="text" 
+        name="name" 
+        [(ngModel)]="name" 
+        placeholder="Name" 
+        required 
+        minlength="3" 
+        maxlength="20" 
+        #nameRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="nameRef.invalid && nameRef.touched">
+        Name must be between 3 and 20 characters.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="email" 
+        name="email" 
+        [(ngModel)]="email" 
+        placeholder="Email" 
+        required 
+        pattern=".{2,}@.*\..*" 
+        #emailRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="emailRef.invalid && emailRef.touched">
+        Enter a valid email address.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="password" 
+        name="password" 
+        [(ngModel)]="password" 
+        placeholder="Password" 
+        required 
+        minlength="6" 
+        maxlength="20" 
+        #passwordRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="passwordRef.invalid && passwordRef.touched">
+        Password must be between 6 and 20 characters.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <select name="userType" [(ngModel)]="userType" required #userTypeRef="ngModel" class="input-field">
+        <option value="">Select User Type</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Patient">Patient</option>
+      </select>
+      <p class="error" *ngIf="userTypeRef.invalid && userTypeRef.touched">
+        Please select a user type.
+      </p>
+    </div>
+
+    <div class="form-group" *ngIf="userType === 'Doctor'">
+      <input 
+        type="text" 
+        name="specialization" 
+        [(ngModel)]="specialization" 
+        placeholder="Specialization" 
+        required 
+        #specializationRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="specializationRef.invalid && specializationRef.touched">
+        Specialization is required for doctors.
+      </p>
+    </div>
+
+    <div class="form-group" *ngIf="userType === 'Patient'">
+      <input 
+        type="number" 
+        name="age" 
+        [(ngModel)]="age" 
+        placeholder="Age" 
+        required 
+        min="0" 
+        #ageRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="ageRef.invalid && ageRef.touched">
+        Age is required for patients.
+      </p>
+    </div>
+    <p class="login-link">
+      <a routerLink="/login">Already have an account? </a>
+    </p>
+
+   
+
+    <button type="submit" class="submit-btn">Register</button>
+
+  </form>
+</div>
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>

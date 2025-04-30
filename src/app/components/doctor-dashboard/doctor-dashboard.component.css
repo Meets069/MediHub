@@ -1,0 +1,76 @@
+/* Top Panel (Navbar) */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+/* .body {
+    background: url('/assets/image.jpg') no-repeat center center/cover;
+    text-align: center;
+    padding: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+} */
+.body {
+    background: url('/assets/image.jpg') no-repeat center center;
+    background-size: contain; /* Or try 'cover' if you prefer full screen */
+    background-repeat: no-repeat;
+        background-position: top center;
+        
+        padding-top: 120px; /* Adjust based on your navbar height */
+        min-height: calc(100vh - 120px); /* Adjust to leave room for the navbar */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+      
+.top-navbar {
+    background-color: #96bae0;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mid-navbar {
+    background-color: #9eabb9;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: darkred;
+}
+
+/* Slider Panel */
+.slider-panel {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    text-align: center;
+}
+.slider-panel h3 {
+    margin-bottom: 10px;
+    color: #333;
+}

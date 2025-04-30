@@ -1,0 +1,43 @@
+
+  .top-navbar {
+    background-color: #96bae0;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mid-navbar {
+    background-color: #9eabb9;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: darkred;
+}
+
+/* button {
+    background-color: rgb(130, 25, 25);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}*/
+.edit-box {
+    background-color: #dbe9f4; /* Light, clean blue */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  

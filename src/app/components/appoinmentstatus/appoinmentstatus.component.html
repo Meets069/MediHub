@@ -1,0 +1,68 @@
+<nav class="top-navbar">
+  <h2>Welcome to the Hospital</h2>
+  <button (click)="logout()">Logout</button>
+</nav>
+
+<nav class="mid-navbar">
+  <a href="/schedule" routerLinkActive="active">Today's Schedule </a>
+    <a href="/approval" routerLinkActive="active">Appointment Approval </a>
+    <a href="/patient-history" routerLinkActive="active">History</a>
+    <a href="/custfeedback" routerLinkActive="active">Customer Feedback</a>
+</nav>
+
+<img src="assets/profile.png" width="30"> <br>
+<a href="/edit-profile" routerLinkActive="active">Profile</a>
+
+<table class="appointment-table">
+  <thead>
+    <tr>
+      <th>Doctor Name</th>
+      <th>Specialization</th>
+      <th>Patient Name</th>
+      <th>Status</th>
+      <th>Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments">
+      <td>{{ appointment.doctorName }}</td>
+      <td>{{ appointment.specialization }}</td>
+      <td>{{ appointment.name }}</td>
+      <td [ngClass]="{ 'pending': appointment.status === 'Pending', 'approved': appointment.status === 'Approved', 'rejected': appointment.status === 'Rejected' }">
+        {{ appointment.status }}
+      </td>
+      <!-- <td>{{ appointment.date }}</td> -->
+      <td>{{ appointment.time }}</td>
+      <td>
+        
+        <div style="display: flex; gap: 10px;">
+          
+
+          <button 
+          class="approve-btn" 
+           [disabled]="disabledButtons.has(appointment._id!)"
+           (click)="onDecision(appointment._id, 'Approved')">
+          Approve
+        </button>
+        
+        
+        <button 
+        class="reject-btn"
+        [disabled]="disabledButtons.has(appointment._id!)" 
+        (click)="onDecision(appointment._id, 'Rejected')">
+       
+        Reject
+        </button>
+           
+
+
+        </div>
+        
+
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+

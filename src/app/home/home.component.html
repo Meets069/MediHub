@@ -1,0 +1,26 @@
+<!-- Splash Screen
+<div *ngIf="showSplash" class="splash-screen">
+    <img src="assets/icon.png" alt="App Icon">
+    <h2>Welcome to Hospital Management System</h2>
+</div>
+
+Home Page Content
+<div *ngIf="!showSplash" class="home-container">
+    <h1>Home Page</h1>
+    <p>Welcome to the Hospital Management System.</p>
+</div>
+
+<!- Home Page Content -->
+<div *ngIf="!showSplash" class="home-container">
+    <h1>Welcome to Hospital Management System</h1>
+    <p>Manage hospital records efficiently.</p>
+
+    <!-- Buttons for Login & Registration -->
+    <div class="auth-buttons">
+        <button (click)="navigateToLogin()">Login</button>
+        <button (click)="navigateToRegister()">Register</button>
+    </div>
+</div>
+
+
+

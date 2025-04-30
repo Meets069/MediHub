@@ -1,0 +1,83 @@
+<nav class="top-navbar">
+  <h2>Welcome to the Hospital</h2>
+  <button (click)="logout()">Logout</button>
+  </nav>
+ 
+
+<nav class="mid-navbar">
+  <a href="/schedule" routerLinkActive="active">Today's Schedule</a>
+  <a href="/approval" routerLinkActive="active">Appointment Approval</a>
+  <a href="/patient-history" routerLinkActive="active">History</a>
+  <a href="/custfeedback" routerLinkActive="active">Customer Feedback</a>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="text-center">Patient History</h2>
+  
+    <!-- Add New History -->
+    <div class="card p-3 mt-3">
+      <h4>Add Patient History</h4>
+      <div class="row">
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Patient Name" [(ngModel)]="newHistory.patientName" />
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Disease" [(ngModel)]="newHistory.disease" />
+        </div>
+        <div class="col-md-3">
+          <input type="date" class="form-control" [(ngModel)]="newHistory.lastVisit" />
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Medicine" [(ngModel)]="newHistory.medicine" />
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" (click)="addHistory()">Add</button>
+    </div>
+  
+    <!-- Edit Mode -->
+    <div *ngIf="editMode" class="card p-3 mt-3 bg-warning">
+      <h4>Edit Patient History</h4>
+      <div class="row">
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="selectedHistory.patientName" />
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="selectedHistory.disease" />
+        </div>
+        <div class="col-md-3">
+          <input type="date" class="form-control" [(ngModel)]="selectedHistory.lastVisit" />
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" [(ngModel)]="selectedHistory.medicine" />
+        </div>
+      </div>
+      <button class="btn btn-success mt-3" (click)="updateHistory()">Update</button>
+      <button class="btn btn-secondary mt-3" (click)="editMode = false">Cancel</button>
+    </div>
+  
+    <!-- Patient History Table -->
+    <table class="table mt-3">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Disease</th>
+          <th>Last Visit</th>
+          <th>Medicine</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let history of histories">
+          <td>{{ history.patientName }}</td>
+          <td>{{ history.disease }}</td>
+          <td>{{ history.lastVisit }}</td>
+          <td>{{ history.medicine }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editHistory(history)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteHistory(history._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

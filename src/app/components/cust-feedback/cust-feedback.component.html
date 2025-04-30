@@ -1,0 +1,21 @@
+<nav class="top-navbar">
+    <h2>Welcome to the Hospital</h2>
+    <button (click)="logout()">Logout</button>
+   
+  </nav>
+  <nav class="mid-navbar">
+    <a href="/schedule" routerLinkActive="active">Today's Schedule</a>
+    <a href="/approval" routerLinkActive="active">Appointment Approval</a>
+    <a href="/patient-history" routerLinkActive="active">History</a>
+    <a href="/custfeedback" routerLinkActive="active">Customer Feedback</a>
+  </nav>
+
+  
+  <div class="container">
+    <h3>All Feedback</h3>
+    <div *ngFor="let fb of feedbackList" class="feedback-item">
+      <p><strong>{{ fb.customer }}</strong> - {{ fb.rating }} ⭐</p>
+      <p>{{ fb.comment }}</p>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+<div class="body">
+  <h2>Login</h2>
+  <form (ngSubmit)="login()" class="login-form">
+
+    <div class="form-group">
+      <input 
+        type="email" 
+        [(ngModel)]="email" 
+        [ngModelOptions]="{standalone: true}" 
+        placeholder="Email" 
+        required 
+        #emailRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="emailRef.invalid && emailRef.touched">
+        Enter a valid email address.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <input 
+        type="password" 
+        [(ngModel)]="password" 
+        [ngModelOptions]="{standalone: true}" 
+        placeholder="Password" 
+        required 
+        minlength="6" 
+        #passwordRef="ngModel"
+        class="input-field"
+      />
+      <p class="error" *ngIf="passwordRef.invalid && passwordRef.touched">
+        Password must be at least 6 characters long.
+      </p>
+    </div>
+
+    <p class="login-link">
+      <a routerLink="/forgot-password">Forgot Password ? </a>
+    </p> 
+
+    <p class="login-link">
+    <a routerLink="/register"> Create a new account? </a>
+    </p>
+
+      
+    <button type="submit" class="submit-btn">Login</button>
+  </form>
+</div>
+
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
