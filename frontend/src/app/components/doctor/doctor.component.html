@@ -1,0 +1,124 @@
+<nav class="top-navbar">
+  <h2>Welcome to the MediHub</h2>
+  <button (click)="logout()">Logout</button>
+ 
+</nav>
+<nav class="mid-navbar">
+  <a href="/dashboard" routerLinkActive="active">Home</a>
+  <a href="/about" routerLinkActive="active">About Us</a>
+  <a href="/doctor" routerLinkActive="active">Doctors</a>
+  <a href="/status" routerLinkActive="active">Appoinment Status</a>
+  <a href="/feedback" routerLinkActive="active">Feedback</a>
+</nav>
+<div class="container mt-4">
+  <header class="text-center mb-4">
+    <h2 class="display-5 text-primary">Meet Our Expert Doctors</h2>
+    <p class="lead">Our team of highly qualified doctors is here to provide the best medical care.</p>
+  </header>
+
+  <!-- Doctors Grid -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let doctor of doctorList; let i = index">
+      <div class="card shadow-lg border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary" (click)="toggleDetails(i)" style="cursor: pointer;">
+            {{ doctor.name }}
+          </h5>
+          <p class="card-text">{{ doctor.specialization }}</p>
+          <button class="btn btn-outline-primary btn-sm" (click)="toggleDetails(i)">
+            View Details
+          </button>
+          <button class="btn btn-outline-primary btn-sm" (click)="bookAppointment(doctor)">
+            Appointment
+          </button>
+        </div>
+
+        <!-- Doctor Details Section -->
+        <div *ngIf="selectedDoctorIndex === i" class="card-footer bg-light">
+          <p><strong>Experience:</strong> {{ doctor.experience }} years</p>
+          <p><strong>Visiting Days:</strong> {{ doctor.visitingDays }}</p>
+          <p><strong>Timings:</strong> {{ doctor.timings }}</p>
+          <p><strong>Contact:</strong> {{ doctor.contact }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <h2>Doctors</h2> -->
+
+<!-- Add Doctor Button -->
+<!-- <button (click)="toggleForm()">Add Doctor</button> -->
+
+<!-- Add/Edit Doctor Form (Hidden by Default) -->
+<!-- <div *ngIf="showForm">
+  <h3>{{ editMode ? 'Edit' : 'Add' }} Doctor</h3>
+  <form (ngSubmit)="saveDoctor()">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="doctorForm.name" name="name" required />
+
+    <label>Specialization:</label>
+    <input type="text" [(ngModel)]="doctorForm.specialization" name="specialization" required />
+
+    <label>Experience:</label>
+    <input type="number" [(ngModel)]="doctorForm.experience" name="experience" required />
+
+    <label>Contact:</label>
+    <input type="text" [(ngModel)]="doctorForm.contact" name="contact" required />
+
+    <button type="submit">{{ editMode ? 'Update' : 'Add' }} Doctor</button>
+    <button *ngIf="editMode" (click)="cancelEdit()" type="button">Cancel</button>
+  </form>
+</div> -->
+
+<!-- Doctor List -->
+<!-- <h2>Doctor List</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Specialization</th>
+    <th>Experience</th>
+    <th>Contact</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let doctor of doctors">
+    <td>{{ doctor.name }}</td>
+    <td>{{ doctor.specialization }}</td>
+    <td>{{ doctor.experience }} years</td>
+    <td>{{ doctor.contact }}</td>
+    <td>
+      <button (click)="editDoctor(doctor)">Update</button>
+      <button (click)="deleteDoctor(doctor.id!)">Delete</button>
+    </td>
+  </tr>
+</table> -->
+
+<!-- <div class="container mt-4">
+  <header class="text-center mb-4">
+    <h2 class="display-5">{{ title }}</h2>
+    <p class="lead">{{ description }}</p>
+  </header>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover shadow-lg rounded">
+      <thead class="table-primary">
+        <tr>
+          <th>#</th>
+          <th>Doctor's Name</th>
+          <th>Specialization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doctor of doctorList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ doctor.name }}</td>
+          <td>{{ doctor.specialization }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+

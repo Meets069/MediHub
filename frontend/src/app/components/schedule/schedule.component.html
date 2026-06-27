@@ -1,0 +1,51 @@
+<!-- schedulecomponent.html -->
+<nav class="top-navbar">
+    <h2>Welcome to the MediHub</h2>
+    <button (click)="logout()">Logout</button>
+   
+  </nav>
+  <nav class="mid-navbar">
+  
+    <a href="/schedule" routerLinkActive="active">Today's Schedule </a>
+    <a href="/approval" routerLinkActive="active">Appointment Approval </a>
+    <a href="/patient-history" routerLinkActive="active">History</a>
+    <a href="/custfeedback" routerLinkActive="active">Customer Feedback</a>
+  </nav>
+
+
+
+  
+  <!-- schedule.component.html -->
+
+<div *ngIf="appointments.length > 0">
+    <h2>Appointments for {{ currentDate }}</h2>
+    <table mat-table [dataSource]="appointments" class="mat-elevation-z8">
+      <ng-container matColumnDef="doctorName">
+        <th mat-header-cell *matHeaderCellDef> Doctor Name </th>
+        <td mat-cell *matCellDef="let appointment"> {{ appointment.doctorName }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="specialization">
+        <th mat-header-cell *matHeaderCellDef> Specialization </th>
+        <td mat-cell *matCellDef="let appointment"> {{ appointment.specialization }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let appointment"> {{ appointment.date }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let appointment"> {{ appointment.time }} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['doctorName', 'specialization', 'date', 'time']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['doctorName', 'specialization', 'date', 'time'];"></tr>
+    </table>
+  </div>
+  
+  <div *ngIf="appointments.length === 0">
+    <p>No appointments scheduled for {{ currentDate }}.</p>
+  </div>
+  
